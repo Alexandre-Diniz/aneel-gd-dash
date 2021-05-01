@@ -1,4 +1,3 @@
-from pandas import read_csv
 from plotly.express import choropleth_mapbox
 from json import load
 from urllib.request import urlopen
@@ -6,8 +5,8 @@ from urllib.request import urlopen
 with open(r"brazil-states.json") as file:
     BR = load(file)
 
-file = 'PotenciaInstaladaPorEstadoPorAno.csv'
-df = read_csv(file, encoding='utf-8')
+with open(r'brazil-states.json') as file:
+    df = load(file)
 
 state_id_map = {}
 for feature in BR["features"]:
