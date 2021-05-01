@@ -11,4 +11,4 @@ app.layout = layout
 
 
 if __name__=="__main__":
-    server(debug=False)
+    server(debug=False,port=8050)
