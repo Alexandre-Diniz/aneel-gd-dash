@@ -1,22 +1,20 @@
-import pandas as pd
-import dash
-import plotly.express as px
-import plotly as plt
-import json
+from pandas import read_csv
+from plotly.express import choropleth_mapbox
+from json import load
 from urllib.request import urlopen
 
-with urlopen("https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/brazil-states.geojson") as response:
-    BR = json.load(response)
+with open(r"brazil-states.json") as file:
+    BR = load(file)
 
 file = 'PotenciaInstaladaPorEstadoPorAno.csv'
-df = pd.read_csv(file, encoding='utf-8')
+df = read_csv(file, encoding='utf-8')
 
 state_id_map = {}
 for feature in BR["features"]:
     feature["id"] = feature["properties"]["name"]
     state_id_map[feature["properties"]["sigla"]] = feature["id"]
 
-fig = px.choropleth_mapbox(
+fig = choropleth_mapbox(
     df,
     locations="Estado",
     geojson=BR,
