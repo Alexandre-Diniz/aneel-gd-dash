@@ -5,7 +5,7 @@ from urllib.request import urlopen
 with open(r"brazil-states.json") as file:
     BR = load(file)
 
-with open(r'brazil-states.json') as file:
+with open(r'potencia-instalada.json') as file:
     df = load(file)
 
 state_id_map = {}
